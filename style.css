@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -17,13 +18,14 @@
   --bg-url: url(./assets/bg-mobile-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
-  --surface-color-hover: rgba(255, 255, 255, 0.5);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -32,7 +34,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
 }
@@ -70,14 +73,21 @@ body * {
 
   position: absolute;
   top: 50%;
-  left: -2px;  
+  left: -2px;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: -2px;  
+  right: -2px;
   left: inherit;
+  animation: slide-in 0.2s forwards;
+}
+
+#swith button:hover{
+  outline: 8px solid var(--highlight-color)
 }
 
 #switch span {
@@ -87,6 +97,7 @@ body * {
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 9999px;
 }
 
@@ -158,6 +169,3 @@ footer {
   font-size: 14px;
 }
 
-footer a {
-  text-decoration: none;
-}
